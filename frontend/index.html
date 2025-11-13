@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=0, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autóbérlés Rendszer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <nav>
+        <h1>🚗 Autóbérlés</h1>
+        <ul>
+            <li><a href="#" onclick="loadPage('dashboard')">Kezdőlap</a></li>
+            <li><a href="#" onclick="loadPage('ugyfel')">Ügyfelek</a></li>
+            <li><a href="#" onclick="loadPage('auto')">Autók</a></li>
+            <li><a href="#" onclick="loadPage('kolcsonzes')">Kölcsönzések</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div id="alert"></div>
+        <div id="content"></div>
+    </div>
+
 </body>
 </html>
