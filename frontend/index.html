@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autóbérlés Rendszer</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autókölcsönzés egyszerű</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <h1>Autókölcsönzés Rendszer</h1>
     <nav>
-        <h1>🚗 Autóbérlés</h1>
-        <ul>
-            <li><a href="#" onclick="loadPage('dashboard')">Kezdőlap</a></li>
-            <li><a href="#" onclick="loadPage('ugyfel')">Ügyfelek</a></li>
-            <li><a href="#" onclick="loadPage('auto')">Autók</a></li>
-            <li><a href="#" onclick="loadPage('kolcsonzes')">Kölcsönzések</a></li>
-        </ul>
+        <button id="btnCustomers" class="active">Ügyfelek</button>
+        <button id="btnCars">Autók</button>
+        <button id="btnRentals">Kölcsönzések</button>
     </nav>
 
-    <div class="container">
-        <div id="alert"></div>
-        <div id="content"></div>
-    </div>
+    <section id="customersSection">
+        <h2>Ügyfelek</h2>
+        <button id="addCustomerBtn">+ Új ügyfél</button>
+        <div id="customerForm" class="hidden">
+            <input type="text" id="customerName" placeholder="Név" />
+            <input type="text" id="customerSzig" placeholder="Személyazonossági szám" />
+            <input type="email" id="customerEmail" placeholder="Email" />
+            <input type="text" id="customerPhone" placeholder="Telefonszám" />
+            <button id="saveCustomerBtn">Mentés</button>
+            <button id="cancelCustomerBtn">Mégse</button>
+        </div>
+        <ul id="customersList"></ul>
+    </section>
 
+    <section id="carsSection" class="hidden">
+        <h2>Autók</h2>
+        <button id="addCarBtn">+ Új autó</button>
+        <div id="carForm" class="hidden">
+            <input type="text" id="carPlate" placeholder="Rendszám" />
+            <input type="text" id="carType" placeholder="Típus" />
+            <input type="text" id="carBrand" placeholder="Márka" />
+            <input type="text" id="carColor" placeholder="Szín" />
+            <button id="saveCarBtn">Mentés</button>
+            <button id="cancelCarBtn">Mégse</button>
+        </div>
+        <ul id="carsList"></ul>
+    </section>
+
+    <section id="rentalsSection" class="hidden">
+        <h2>Kölcsönzések</h2>
+        <button id="addRentalBtn">+ Új kölcsönzés</button>
+        <div id="rentalForm" class="hidden">
+            <select id="rentalCar"></select>
+            <select id="rentalCustomer"></select>
+            <input type="datetime-local" id="rentalStart" />
+            <input type="datetime-local" id="rentalEnd" />
+            <input type="number" id="rentalStartKm" placeholder="Km elvitelkor" />
+            <input type="number" id="rentalEndKm" placeholder="Km visszahozatalkor" />
+            <input type="number" id="rentalDailyFee" placeholder="Napi díj" step="0.01" />
+            <button id="saveRentalBtn">Mentés</button>
+            <button id="cancelRentalBtn">Mégse</button>
+        </div>
+        <ul id="rentalsList"></ul>
+    </section>
 </body>
 </html>

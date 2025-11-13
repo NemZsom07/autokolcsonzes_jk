@@ -8,14 +8,14 @@ use App\Models\Ugyfel;
 class UgyfelController extends Controller
 {
     public function index(){
-        $uygfelek = Ugyfel::all();
-        return response()->json($uygfelek);
+        $ugyfelek = Ugyfel::all();
+        return response()->json($ugyfelek);
     }
 
     public function show($ugyfel_id){
         $ugyfel = Ugyfel::find($ugyfel_id);
         if(!$ugyfel){
-            return response()->json(["message" => "Nincs ilyen Ügyfél!!4!!!négy!!!"]);
+            return response()->json(["message" => "Nincs ilyen Ügyfél!"], 404);
         }
         return response()->json($ugyfel);
     }
@@ -23,23 +23,29 @@ class UgyfelController extends Controller
     public function destroy($ugyfel_id){
         $ugyfel = Ugyfel::find($ugyfel_id);
         if(!$ugyfel){
-            return response()->json(["message" => "Nincs ilyen Ügyfél!!4!!!négy!!!"]);
+            return response()->json(["message" => "Nincs ilyen Ügyfél!"], 404);
         }
-       $ugyfel->delete();
-       return response()->json(["message" => "Ügyfél sikeresen törölve"]);
+        $ugyfel->delete();
+        return response()->json(["message" => "Ügyfél sikeresen törölve"]);
     }
 
-    public function update(Request $req, $ugyfel_id){
+    public function update(Request $request, $ugyfel_id){
         $ugyfel = Ugyfel::find($ugyfel_id);
         if(!$ugyfel){
-            return response()->json(["message" => "Nincs ilyen Ügyfél!!4!!!négy!!!"]);
+            return response()->json(["message" => "Nincs ilyen Ügyfél!"], 404);
         }
-        $ugyfel->update($req->all());
+        $ugyfel->update($request->all());
         return response()->json($ugyfel);
     }
 
-    public function store(Request $req, $ugyfel_id){
-        $ugyfel = Ugyfel::create($req->all());
-        return response()->json($ugyfel,201);
+    public function store(Request $request){
+        $validatedData = $request->validate([
+            'nev' => 'required|string|max:255',
+            'szig' => 'required|string|unique:ugyfelek,szig',
+            'email' => 'required|email|unique:ugyfelek,email',
+            'telefonszam' => 'required|string'
+        ]);
+        $ugyfel = Ugyfel::create($validatedData);
+        return response()->json($ugyfel, 201);
     }
 }
