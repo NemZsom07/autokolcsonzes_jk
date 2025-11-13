@@ -11,10 +11,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get("/autok",[AutoController::class,"index"]);
-Route::get("/autok/{auto_id}",[AutoController::class,"show"]);
+Route::get("/autok/{id}",[AutoController::class,"show"]);
 Route::post("/autok",[AutoController::class,"store"]);
-Route::put("/autok/{auto_id}",[AutoController::class,"update"]);
-Route::delete("/autok/{auto_id}",[AutoController::class,"destroy"]);
+Route::put("/autok/{aid}",[AutoController::class,"update"]);
+Route::delete("/autok/{aid}",[AutoController::class,"destroy"]);
 
 Route::get("/ugyfelek",[UgyfelController::class,"index"]);
 Route::get("/ugyfelek/{id}",[UgyfelController::class,"show"]);
