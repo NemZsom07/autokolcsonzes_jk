@@ -13,7 +13,7 @@ class UgyfelController extends Controller
     }
 
     public function show($ugyfel_id){
-        $ugyfel = IceCream::find($ugyfel_id);
+        $ugyfel = Ugyfel::find($ugyfel_id);
         if(!$ugyfel){
             return response()->json(["message" => "Nincs ilyen Ügyfél!!4!!!négy!!!"]);
         }
@@ -21,7 +21,7 @@ class UgyfelController extends Controller
     }
 
     public function destroy($ugyfel_id){
-        $ugyfel = IceCream::find($ugyfel_id);
+        $ugyfel = Ugyfel::find($ugyfel_id);
         if(!$ugyfel){
             return response()->json(["message" => "Nincs ilyen Ügyfél!!4!!!négy!!!"]);
         }
@@ -30,7 +30,7 @@ class UgyfelController extends Controller
     }
 
     public function update(Request $req, $ugyfel_id){
-        $ugyfel = IceCream::find($ugyfel_id);
+        $ugyfel = Ugyfel::find($ugyfel_id);
         if(!$ugyfel){
             return response()->json(["message" => "Nincs ilyen Ügyfél!!4!!!négy!!!"]);
         }
@@ -39,7 +39,7 @@ class UgyfelController extends Controller
     }
 
     public function store(Request $req, $ugyfel_id){
-        $ugyfel = IceCream::create($req->all());
+        $ugyfel = Ugyfel::create($req->all());
         return response()->json($ugyfel,201);
     }
 }
